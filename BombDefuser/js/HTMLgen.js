@@ -90,6 +90,6 @@ function getHTMLForSelect(field, solverIndex){
 	field.values.forEach(function(text, index){
 		ret += '<option value='+text+'>'+text+'</option>\n';
 	});
-	ret += '</select>';
+	ret += '</select>\n';
 	return ret;
 }
