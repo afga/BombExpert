@@ -10,6 +10,12 @@ modules.push({
 		function onchange(data, outputDOMElems){
 			var outText = "";
 			outText += getDataElemByName(data, "testText").value;
+			outText += "<br />\n";
+			outText += getDataElemByName(data, "testRadioColor").value;
+			outText += "<br />\n";
+
+
+
 			outputDOMElems[0].innerHTML = outText; 
 		};
 
@@ -24,9 +30,9 @@ modules.push({
 				{type : "lineBreak"},
 				{type : "select", name : "testSelect", values : ["Abort","Detonate","Hold","[Other]"]},
 				{type : "lineBreak"},
-				{type : "checkI", name : "testCheckImg", values : ["key_01.png","key_02.png","key_03.png"]},
+				{type : "checkI", name : "testCheckImg", values : ["1-copyright.png","2-filledstar.png","3-hollowstar.png","4-smileyface.png","5-doublek.png"], folder : "keypads"},
 				{type : "lineBreak"},
-				{type : "imgMap", name : "testImgMap", img : "mapimg.png", values : [{shape:"rect",coords:"0,0,50,50"}]}
+				{type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [{shape:"rect",coords:"0,0,50,50"}]}
 			],
 			outputFields : [
 				{type : "text", name : "out"}

@@ -7,6 +7,15 @@
 	height: 20px;
 	border: solid 2px black;
 }
+
+.solve-module img.inputCheckImg {
+	clear: none;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	border: solid 2px black;
+}
+
 .solve-module form input {
 	clear: none;
 	display: inline-block;
@@ -16,5 +25,12 @@
 	display: none;
 }
 .solve-module form input.radioC:checked + label > div.inputColorBox{
+	border: solid 2px lime;
+}
+
+.solve-module form input.checkI{
+	display: none;
+}
+.solve-module form input.checkI:checked + label > img.inputCheckImg{
 	border: solid 2px lime;
 }

@@ -1,5 +1,6 @@
 function getDataForSolver(solverIndex){
 	var data = [];
+	var formElems = $("#"+ getSolverId(solverIndex) +" form").elements;
 	solvers[solverIndex].inputFields.forEach(function(field, index){
 		var newData = {};
 		var isData = false;
@@ -10,6 +11,16 @@ function getDataForSolver(solverIndex){
 				isData = true;
 				newData.name = field.name;
 				newData.value = $("#"+getInputId(solverIndex, field.name)).value;
+				break;
+			case "radioC":
+				isData = true;
+				newData.name = field.name;
+				newData.value = "";
+				formElems.namedItem(field.name).forEach(function(radio){
+					if(radio.checked){
+						newData.value = radio.value;
+					}
+				});
 				break;
 			default:
 				console.log("ismeretlen input type: "+field.type);

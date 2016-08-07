@@ -8,7 +8,7 @@ function getHTMLEntryFromMenuEntry(menuE, index){
 
 function getSolverHTML(inFields, outFields, solverIndex){
 	var out = "";
-	out += '<div class="solve-module" id="solver-i'+solverIndex+'">\n';
+	out += '<div class="solve-module" id="'+getSolverId(solverIndex)+'">\n';
 	out += '<form oninput="changed(' + solverIndex + ');">\n';
 	inFields.forEach(function(field, index){
 		switch(field.type){
@@ -26,6 +26,12 @@ function getSolverHTML(inFields, outFields, solverIndex){
 				break;
 			case "select":
 				out += getHTMLForSelect(field, solverIndex);
+				break;
+			case "checkI":
+				out += getHTMLForCheckImg(field, solverIndex);
+				break;
+			case "imgMap":
+				out += getHTMLForImgMap(field, solverIndex);
 				break;
 			default:
 				console.log("ismeretlen input type: "+field.type);
@@ -46,12 +52,20 @@ function getSolverHTML(inFields, outFields, solverIndex){
 	return out;
 }
 
+function getSolverId(solverIndex){
+	return "solver-i"+solverIndex;
+}
+
 function getInputId(solverIndex, fieldName){
 	return "input-s"+solverIndex+"-n"+fieldName;
 }
 
 function getInputIdForRadio(solverIndex, fieldName, radioIndex){
 	return "input-s"+solverIndex+"-n"+fieldName+"-i"+radioIndex;
+}
+
+function getInputIdForCheckbox(solverIndex, fieldName, checkboxIndex){
+	return "input-s"+solverIndex+"-n"+fieldName+"-i"+checkboxIndex;
 }
 
 function getOutputId(solverIndex, fieldIndex){
@@ -91,5 +105,24 @@ function getHTMLForSelect(field, solverIndex){
 		ret += '<option value='+text+'>'+text+'</option>\n';
 	});
 	ret += '</select>\n';
+	return ret;
+}
+
+function getHTMLForCheckImg(field, solverIndex){
+	var ret = "";
+	field.values.forEach(function(img, index){
+		var id = getInputIdForCheckbox(solverIndex, field.name, index);
+		ret += '<input type="checkbox" class="checkI" name="'+field.name+'" value="'+index+'" id="'+id+'">\n';
+		ret += '<label for="'+id+'">\n';
+		ret += '	<img class="inputCheckImg" src="img/'+field.folder+'/'+img+'" />\n';
+		ret += '</label>\n';
+	});
+	return ret;
+}
+
+function getHTMLForImgMap(field, solverIndex){
+	var ret = "";
+	ret += '<img src="img/'+field.img+'" />\n';
+	// TODO map
 	return ret;
 }
