@@ -46,7 +46,9 @@ modules.push({
 				{type : "lineBreak"},
 				{type : "checkI", name : "testCheckImg", values : ["1-copyright.png","2-filledstar.png","3-hollowstar.png","4-smileyface.png","5-doublek.png"], folder : "keypads"},
 				{type : "lineBreak"},
-				{type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [{shape:"rect",coords:"0,0,50,50"}]}
+				{type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [
+					{shape : "rect", coords : "0,0,50,50", value : "A"}
+				]}
 			],
 			outputFields : [
 				{type : "text", name : "out"}

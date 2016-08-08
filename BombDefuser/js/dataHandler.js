@@ -83,3 +83,7 @@ function getDataElemByName(data, name){
 	console.log("ismeretlen input mezo: "+name);
 	return "";
 }
+
+function mapHandler(value, solverIndex){
+	//TODO
+}

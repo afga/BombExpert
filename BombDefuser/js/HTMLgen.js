@@ -122,7 +122,11 @@ function getHTMLForCheckImg(field, solverIndex){
 
 function getHTMLForImgMap(field, solverIndex){
 	var ret = "";
-	ret += '<img src="img/'+field.img+'" />\n';
-	// TODO map
+	ret += '<img src="img/'+field.img+'" usemap="'+ field.name +'" />\n';
+	ret += '<map name="'+ field.name +'">\n';
+	field.values.forEach(function(area, index){
+		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler('+ area.value + ', ' + solverIndex +');"/>\n';
+	});
+	ret += '</map>\n';
 	return ret;
 }
