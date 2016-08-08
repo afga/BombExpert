@@ -125,7 +125,7 @@ function getHTMLForImgMap(field, solverIndex){
 	ret += '<img src="img/'+field.img+'" usemap="'+ field.name +'" />\n';
 	ret += '<map name="'+ field.name +'">\n';
 	field.values.forEach(function(area, index){
-		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler('+ area.value + ', ' + solverIndex +');"/>\n';
+		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');"/>\n';
 	});
 	ret += '</map>\n';
 	return ret;
