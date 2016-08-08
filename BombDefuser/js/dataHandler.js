@@ -13,6 +13,7 @@ function getDataForSolver(solverIndex){
 				newData.value = $("#"+getInputId(solverIndex, field.name)).value;
 				break;
 			case "radioC":
+			case "radioT":
 				isData = true;
 				newData.name = field.name;
 				newData.value = "";
@@ -21,6 +22,27 @@ function getDataForSolver(solverIndex){
 						newData.value = radio.value;
 					}
 				});
+				break;
+			case "checkI":
+				isData = true;
+				newData.name = field.name;
+				newData.value = [];
+				formElems.namedItem(field.name).forEach(function(radio){
+					if(radio.checked){
+						newData.value.push(radio.value);
+					}
+				});
+				break;
+			case "select":
+				isData = true;
+				newData.name = field.name;
+				newData.value = "";
+				var chs = $("#"+getInputId(solverIndex, field.name)).children;
+				for(var i = 0; i < chs.length; ++i){
+					if(chs[i].selected){
+						newData.value = chs[i].value;
+					}
+				}
 				break;
 			default:
 				console.log("ismeretlen input type: "+field.type);

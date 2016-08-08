@@ -9,11 +9,25 @@ modules.push({
 	getSolver : function(){
 		function onchange(data, outputDOMElems){
 			var outText = "";
-			outText += getDataElemByName(data, "testText").value;
-			outText += "<br />\n";
-			outText += getDataElemByName(data, "testRadioColor").value;
+			outText += "text: "+getDataElemByName(data, "testText").value;
 			outText += "<br />\n";
 
+			outText += "radio color: "+getDataElemByName(data, "testRadioColor").value;
+			outText += "<br />\n";
+
+			outText += "radio text: "+getDataElemByName(data, "testRadioText").value;
+			outText += " ";
+			outText += getDataElemByName(data, "testRadioColor2").value;
+			outText += "<br />\n";
+
+			outText += "select: "+getDataElemByName(data, "testSelect").value;
+			outText += "<br />\n";
+
+			outText += "img checkbox: ";
+			getDataElemByName(data, "testCheckImg").value.forEach(function(item){
+				outText += item + ' ';
+			});
+			outText += "<br />\n";
 
 
 			outputDOMElems[0].innerHTML = outText; 
