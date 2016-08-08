@@ -72,6 +72,10 @@ function getOutputId(solverIndex, fieldIndex){
 	return "output-s"+solverIndex+"-i"+fieldIndex;
 }
 
+function getNameForMap(solverIndex, fieldName){
+	return "map-s"+solverIndex+"-n"+fieldName;
+}
+
 function getHTMLForInputText(field, solverIndex){
 	return '<input type="text" id="'+getInputId(solverIndex, field.name)+'"/>';
 }
@@ -122,10 +126,11 @@ function getHTMLForCheckImg(field, solverIndex){
 
 function getHTMLForImgMap(field, solverIndex){
 	var ret = "";
-	ret += '<img src="img/'+field.img+'" usemap="'+ field.name +'" />\n';
-	ret += '<map name="'+ field.name +'">\n';
+	var mapName = getNameForMap(solverIndex, field.name);
+	ret += '<img src="img/'+field.img+'" usemap="'+ mapName +'" />\n';
+	ret += '<map name="'+ mapName +'">\n';
 	field.values.forEach(function(area, index){
-		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');"/>\n';
+		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>\n';
 	});
 	ret += '</map>\n';
 	return ret;

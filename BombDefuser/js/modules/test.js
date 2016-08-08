@@ -7,6 +7,8 @@ modules.push({
 	},
 
 	getSolver : function(){
+		var mapValue = "";
+
 		function onchange(data, outputDOMElems){
 			var outText = "";
 			outText += "text: "+getDataElemByName(data, "testText").value;
@@ -28,10 +30,17 @@ modules.push({
 				outText += item + ' ';
 			});
 			outText += "<br />\n";
+			outText += "map: " + mapValue;
+			outText += "<br />\n";
 
 
 			outputDOMElems[0].innerHTML = outText; 
-		};
+		}
+
+		function mapHandler(value/* , fieldName */){
+			mapValue += value;
+		}
+
 
 		return {
 			inputFields : [
@@ -47,13 +56,15 @@ modules.push({
 				{type : "checkI", name : "testCheckImg", values : ["1-copyright.png","2-filledstar.png","3-hollowstar.png","4-smileyface.png","5-doublek.png"], folder : "keypads"},
 				{type : "lineBreak"},
 				{type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [
-					{shape : "rect", coords : "0,0,50,50", value : "A"}
+					{shape : "rect", coords : "0,0,50,50", value : "A"},
+					{shape : "rect", coords : "50,0,100,50", value : "B"}
 				]}
 			],
 			outputFields : [
 				{type : "text", name : "out"}
 			],
-			onchange : onchange
+			onchange : onchange,
+			mapHandler : mapHandler
 		}
 	}
 });

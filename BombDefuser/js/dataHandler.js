@@ -44,6 +44,8 @@ function getDataForSolver(solverIndex){
 					}
 				}
 				break;
+			case "imgMap":
+				break;
 			default:
 				console.log("ismeretlen input type: "+field.type);
 		}
@@ -84,6 +86,6 @@ function getDataElemByName(data, name){
 	return "";
 }
 
-function mapHandler(value, solverIndex){
-	//TODO
+function mapHandler(value, solverIndex, fieldName){
+	solvers[solverIndex].mapHandler(value, fieldName);
 }
