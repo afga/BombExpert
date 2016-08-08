@@ -9,7 +9,7 @@ function getHTMLEntryFromMenuEntry(menuE, index){
 function getSolverHTML(inFields, outFields, solverIndex){
 	var out = "";
 	out += '<div class="solve-module" id="'+getSolverId(solverIndex)+'">\n';
-	out += '<form oninput="changed(' + solverIndex + ');">\n';
+	out += '<form oninput="changed(' + solverIndex + ');" onchange="changed(' + solverIndex + ');">\n';
 	inFields.forEach(function(field, index){
 		switch(field.type){
 			case "lineBreak":
