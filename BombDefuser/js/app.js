@@ -29,7 +29,7 @@ function registerListener(item, index){
 function createSolver(module){
 	var solver = module.getSolver();
 	var solverIndex = solverCounter.increaseValue();
-	var solverHTML = getSolverHTML(solver.inputFields, solver.outputFields, solverIndex);
+	var solverHTML = getSolverHTML(solver.fields, solverIndex);
 	solvers[solverIndex] = solver;
 	var cont = document.createElement("div");
 	cont.innerHTML = solverHTML;
@@ -38,10 +38,16 @@ function createSolver(module){
 }
 
 function changed(solverIndex){
-	var data = getDataForSolver(solverIndex);
-	var outDOM = getOutputDOMElementsForSolver(solverIndex);
+	if(solverIndex === 0){
+		for(var i = 1; i < solvers.length; ++i){
+			changed(i);
+		}
+	} else {
+		var data = getDataForSolver(solverIndex);
+		var outDOM = getOutputDOMElementsForSolver(solverIndex);
 
-	solvers[solverIndex].onchange(data, outDOM);
+		solvers[solverIndex].onchange(data, outDOM);
+	}
 }
 
 function $(element){
