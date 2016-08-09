@@ -15,9 +15,6 @@ function getSolverHTML(fields, solverIndex){
 			case "in":
 			case "inout":
 				switch(field.type){
-					case "lineBreak":
-						out += "<br />\n";
-						break;
 					case "textBox":
 						out += getHTMLForInputText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
@@ -45,6 +42,9 @@ function getSolverHTML(fields, solverIndex){
 					case "text":
 						out += '<p class="outText" id="'+getFieldId(field, solverIndex)+'"></p>';
 						break;
+					case "imgBox":
+						out += '<div class="imgBox" id="'+getFieldId(field, solverIndex)+'"></div>';
+						break;
 					default:
 						console.log("ismeretlen output type: "+field.type);
 				}
@@ -61,7 +61,6 @@ function getSolverHTML(fields, solverIndex){
 			default:
 				console.log("ismeretlen funct type: "+field.func);
 		}
-		out += "\n";
 	});
 	out += '</form>\n';
 	out += "</div>";
@@ -77,7 +76,7 @@ function getFieldId(field, solverIndex){
 }
 
 function getHTMLForInputText(field, solverIndex, id){
-	return '<input type="text" id="'+id+'"/>';
+	return '<input type="text" id="'+id+'"/>\n';
 }
 
 function getHTMLForRadioColor(field, solverIndex, id){

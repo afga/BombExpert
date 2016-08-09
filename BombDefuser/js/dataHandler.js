@@ -60,19 +60,8 @@ function getOutputDOMElementsForSolver(solverIndex){
 	var outElems = [];
 	solvers[solverIndex].fields.forEach(function(field, index){
 		if(field.func === "out" || field.func === "inout"){
-			var elem;
-			var isElem = false;
-			switch(field.type){
-				case "text":
-					isElem = true;
-					elem = $("#"+getFieldId(field, solverIndex));
-					break;
-				default:
-					console.log("ismeretlen output type: "+field.type);
-			}
-			if(isElem === true){
-				outElems.push(elem);
-			}
+			var elem = $("#"+getFieldId(field, solverIndex));
+			outElems.push(elem);
 		}
 	});
 	return outElems;

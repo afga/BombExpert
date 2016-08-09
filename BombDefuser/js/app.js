@@ -34,7 +34,8 @@ function createSolver(module){
 	var cont = document.createElement("div");
 	cont.innerHTML = solverHTML;
 	$("#solvers").appendChild(cont);
-
+	var outDOM = getOutputDOMElementsForSolver(solverIndex);
+	solvers[solverIndex].init(outDOM);
 }
 
 function changed(solverIndex){

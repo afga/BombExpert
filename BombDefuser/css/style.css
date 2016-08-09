@@ -34,3 +34,11 @@
 .solve-module form input.checkI:checked + label > img.inputCheckImg{
 	border: solid 2px lime;
 }
+
+.solve-module .imgBox{
+	clear: none;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	border: solid 2px black;
+}

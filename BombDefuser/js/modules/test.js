@@ -9,12 +9,24 @@ modules.push({
 	getSolver : function(){
 		var mapValue = "";
 
+		function init(outputDOMElems){
+			outputDOMElems[0].style.backgroundImage = 'url("img/dontKnow.png")';
+		}
+
 		function onchange(data, outputDOMElems){
 			var outText = "";
+
 			outText += "text: "+getDataElemByName(data, "testText").value;
 			outText += "<br />\n";
 
-			outText += "radio color: "+getDataElemByName(data, "testRadioColor").value;
+			var col1 = getDataElemByName(data, "testRadioColor").value;
+			if(col1 === "")
+				outputDOMElems[0].style.backgroundImage = 'url("img/dontKnow.png")';
+			else if(col1 === "red")
+				outputDOMElems[0].style.backgroundImage = 'url("img/cut.png")';
+			else
+				outputDOMElems[0].style.backgroundImage = 'url("img/dontCut.png")';
+			outText += "radio color: "+col1;
 			outText += "<br />\n";
 
 			outText += "radio text: "+getDataElemByName(data, "testRadioText").value;
@@ -34,7 +46,7 @@ modules.push({
 			outText += "<br />\n";
 
 
-			outputDOMElems[0].innerHTML = outText; 
+			outputDOMElems[1].innerHTML = outText; 
 		}
 
 		function mapHandler(value/* , fieldName */){
@@ -47,6 +59,7 @@ modules.push({
 				{func : "in", type : "textBox", name : "testText"},
 				{func : "layout", type : "lineBreak"},
 				{func : "in", type : "radioC", name : "testRadioColor", values : ["red","black","white","yellow","blue"]},
+				{func : "out", type : "imgBox", name : "resImg"},
 				{func : "layout", type : "lineBreak"},
 				{func : "in", type : "radioT", name : "testRadioText", values : ["A","B","C"]},
 				{func : "in", type : "radioC", name : "testRadioColor2", values : ["red","blue","black"]},
@@ -61,6 +74,7 @@ modules.push({
 				]},
 				{func : "out", type : "text", name : "out"}
 			],
+			init : init,
 			onchange : onchange,
 			mapHandler : mapHandler
 		}
