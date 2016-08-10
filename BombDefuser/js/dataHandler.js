@@ -58,10 +58,30 @@ function getDataForSolver(solverIndex){
 
 function getOutputDOMElementsForSolver(solverIndex){
 	var outElems = [];
+	var formElems = $("#"+ getSolverId(solverIndex) +" form").elements;
 	solvers[solverIndex].fields.forEach(function(field, index){
 		if(field.func === "out" || field.func === "inout"){
-			var elem = $("#"+getFieldId(field, solverIndex));
-			outElems.push(elem);
+			switch(field.type){
+				case "textBox":
+				case "select":
+				case "imgMap":
+				case "text":
+				case "imgBox":
+					var elem = $("#"+getFieldId(field, solverIndex));
+					outElems.push(elem);
+					break;
+				case "radioC":
+				case "radioT":
+				case "checkI":
+					var elem = [];
+					formElems.namedItem(field.name).forEach(function(e){
+						elem.push(e);
+					});
+					outElems.push(elem);
+					break;
+				default:
+					console.log("ismeretlen out type: "+field.type);
+			}
 		}
 	});
 	return outElems;

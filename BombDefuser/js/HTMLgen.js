@@ -85,7 +85,7 @@ function getHTMLForRadioColor(field, solverIndex, id){
 		var id2 = id+"-i"+index;
 		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">\n';
 		ret += '<label for="'+id2+'">\n';
-		ret += '	<div class="inputColorBox" style="background-color:'+color+'"></div>\n';
+		ret += '	<div class="inputColorBox '+color+'" ></div>\n';
 		ret += '</label>\n';
 	});
 	return ret;
@@ -125,7 +125,7 @@ function getHTMLForCheckImg(field, solverIndex, id){
 
 function getHTMLForImgMap(field, solverIndex, id){
 	var ret = "";
-	ret += '<img src="img/'+field.img+'" usemap="'+ id +'" />\n';
+	ret += '<img src="img/'+field.img+'" usemap="'+ id +'" id="'+ id +'"/>\n';
 	ret += '<map name="'+ id +'">\n';
 	field.values.forEach(function(area, index){
 		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>\n';

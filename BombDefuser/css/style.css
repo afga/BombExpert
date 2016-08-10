@@ -24,6 +24,26 @@
 .solve-module form input.radioC{
 	display: none;
 }
+
+div.inputColorBox.red{
+	background-color: red;
+}
+div.inputColorBox.black{
+	background-color: black;
+}
+div.inputColorBox.white{
+	background-color: white;
+}
+div.inputColorBox.blue{
+	background-color: blue;
+}
+div.inputColorBox.yellow{
+	background-color: yellow;
+}
+div.inputColorBox.none{
+	background-image: url("../img/noWire.png");
+}
+
 .solve-module form input.radioC:checked + label > div.inputColorBox{
 	border: solid 2px lime;
 }

@@ -58,7 +58,7 @@ modules.push({
 			fields : [
 				{func : "in", type : "textBox", name : "testText"},
 				{func : "layout", type : "lineBreak"},
-				{func : "in", type : "radioC", name : "testRadioColor", values : ["red","black","white","yellow","blue"]},
+				{func : "in", type : "radioC", name : "testRadioColor", values : ["red","black","white","yellow","blue","none"]},
 				{func : "out", type : "imgBox", name : "resImg"},
 				{func : "layout", type : "lineBreak"},
 				{func : "in", type : "radioT", name : "testRadioText", values : ["A","B","C"]},
