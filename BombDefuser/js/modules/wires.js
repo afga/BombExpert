@@ -18,6 +18,7 @@ modules.push({
             var colors = [];
             var colorNum = {red:0,blue:0,white:0,black:0,yellow:0};
             var empty = ["","","","","",""];
+            var serialLastDigitEven = getDataElemByName(data, "serialLastDigit").value % 2 == 0;
             for(var i = 1; i <= 6; ++i){
                 var col = getDataElemByName(data, "wire"+i+"Color").value;
                 if(col === "")
@@ -76,11 +77,40 @@ modules.push({
                         else
                             return lastWire().i;
                     case 4:
-
+                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                            return 0;
+                        else if(colorNum.red > 1 && !serialLastDigitEven)
+                            return lastWire("red").i;
+                        else if(lastWire().c === "yellow" && colorNum.red == 0)
+                            return nthWire(1).i;
+                        else if(colorNum.blue == 1)
+                            return nthWire(1).i;
+                        else if(colorNum.yellow > 1)
+                            return lastWire().i;
+                        else
+                            return nthWire(2).i;
                     case 5:
-
+                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                            return 0;
+                        else if(lastWire().c === "black" && !serialLastDigitEven)
+                            return nthWire(4).i;
+                        else if(colorNum.red == 1 && colorNum.yellow > 1)
+                            return nthWire(1).i;
+                        else if(colorNum.black == 0)
+                            return nthWire(2).i;
+                        else
+                            return nthWire(1).i;
                     case 6:
-
+                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                            return 0;
+                        else if(colorNum.yellow == 0 && !serialLastDigitEven)
+                            return nthWire(3).i;
+                        else if(colorNum.yellow == 1 && colorNum.white > 1)
+                            return nthWire(4).i;
+                        else if(colorNum.red == 0)
+                            return lastWire().i;
+                        else
+                            return nthWire(4).i;
                     default:
                         return 0;
                 }

@@ -53,6 +53,9 @@ function getDataForSolver(solverIndex){
 			}
 		}
 	});
+	generalData.forEach(function(entry){
+		data.push({name:entry.name,value:entry.value});
+	});
 	return data;
 }
 
