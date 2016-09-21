@@ -1,6 +1,6 @@
 var counter = {
 	create : function () {
-		var _c = -1;
+		var _c = 0;
 		function getValue () {
 			return _c;
 		}

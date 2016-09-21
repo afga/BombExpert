@@ -16,7 +16,8 @@ function getDataForSolver(solverIndex){
 					isData = true;
 					newData.name = field.name;
 					newData.value = "";
-					formElems.namedItem(field.name).forEach(function(radio){
+					var radios = formElems.namedItem(field.name);
+					Array.prototype.forEach.call(radios, function(radio){
 						if(radio.checked){
 							newData.value = radio.value;
 						}
@@ -26,7 +27,8 @@ function getDataForSolver(solverIndex){
 					isData = true;
 					newData.name = field.name;
 					newData.value = [];
-					formElems.namedItem(field.name).forEach(function(radio){
+					var radios = formElems.namedItem(field.name)
+					Array.prototype.forEach.call (radios, function(radio){
 						if(radio.checked){
 							newData.value.push(radio.value);
 						}
