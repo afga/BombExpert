@@ -2,12 +2,15 @@ window.addEventListener('load', function() {
 	solverCounter = counter.create();
 	buildMenu();
 	registerEventListeners();
+	createSolver(modules[0]);
 } , false);
 
 var solverCounter;
 
 function buildMenu(){
-	modules.forEach(makeMenuItem);
+	for (var i = 1; i < modules.length; ++i){
+		makeMenuItem(modules[i], i);
+	}
 }
 
 function makeMenuItem(item, index){
@@ -17,7 +20,9 @@ function makeMenuItem(item, index){
 }
 
 function registerEventListeners(){
-	modules.forEach(registerListener);
+	for (var i = 1; i < modules.length; ++i){
+		registerListener(modules[i], i);
+	}
 }
 
 function registerListener(item, index){

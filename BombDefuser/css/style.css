@@ -68,3 +68,15 @@ div.inputColorBox.none{
 	display: inline;
 	margin-right: 20px;
 }
+
+.solve div{
+	display: inline-block;
+	clear: none;
+	vertical-align: top;
+}
+
+.solve>div{
+	margin: 3px;
+	padding: 3px;
+	border: 2px solid black;
+}
