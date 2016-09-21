@@ -16,7 +16,7 @@ modules.push({
 		function onchange(data, outputDOMElems){
 			generalData = [];
 			generalData.push({ name : "serialLastDigit", value : getDataElemByName(data, "serialLastDigit").value});
-			generalData.push({ name : "batteryNumber", value : getDataElemByName(data, "batteryNumber").value});
+			generalData.push({ name : "batteryCount", value : getDataElemByName(data, "batteryCount").value});
 			generalData.push({ name : "indicators", value : getIndicatorValues()});
 
 			function getIndicatorValues(){
@@ -35,7 +35,7 @@ modules.push({
 				{func : "in", type : "textBox", name : "serialLastDigit"},
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "batteryLabel"},
-				{func : "in", type : "textBox", name : "batteryNumber"},
+				{func : "in", type : "textBox", name : "batteryCount"},
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "indicatorLabel"},
 				{func : "in", type : "checkI", name : "indicators", values : ["CAR.png", "FRK.png"], folder : "indicators"}				
