@@ -15,7 +15,34 @@ modules.push({
 		}
 
 		function onchange(data, outputDOMElems){
-			
+			var sets = [
+				[25,12,26,11,7,9,21],
+				[15,25,21,23,3,9,18],
+				[1,8,23,5,14,26,3],
+				[10,19,27,7,5,18,4],
+				[22,4,27,20,19,17,2],
+				[10,15,24,13,22,16,6]
+			];
+			var imgs = ["1-copyright.svg","2-filledstar.svg3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg","7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg","14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg","21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg","28-balloon.svg","30-upsidedowny.svg","31-bt.svg"];
+
+			var currSel = [];
+			//TODO parse to int
+			getDataElemByName(data,"pads1").value.forEach(function(itemI){
+				currSel.push(itemI);
+			});
+			getDataElemByName(data,"pads2").value.forEach(function(itemI){
+				currSel.push(6+itemI);
+			});
+			getDataElemByName(data,"pads3").value.forEach(function(itemI){
+				currSel.push(12+itemI);
+			});
+			getDataElemByName(data,"pads4").value.forEach(function(itemI){
+				currSel.push(18+itemI);
+			});
+			getDataElemByName(data,"pads5").value.forEach(function(itemI){
+				currSel.push(24+itemI);
+			});
+			console.log(currSel);
 		}
 
 		return {
