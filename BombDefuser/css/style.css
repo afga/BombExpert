@@ -6,6 +6,7 @@
 	width: 20px;
 	height: 20px;
 	border: solid 2px black;
+	vertical-align: super;
 }
 
 .solve-module img.inputCheckImg {
@@ -72,13 +73,13 @@ div.inputColorBox.none{
 .solve div{
 	display: inline-block;
 	clear: none;
-	vertical-align: top;
 }
 
 .solve>div{
 	margin: 3px;
 	padding: 3px;
 	border: 2px solid black;
+	vertical-align: top;
 }
 
 .imgBox {
