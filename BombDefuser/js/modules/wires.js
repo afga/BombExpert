@@ -9,8 +9,9 @@ modules.push({
 	getSolver : function(){
 
 		function init(outputDOMElems){
+            outputDOMElems[0].innerHTML = 'Wires:';
             for(var i = 0; i < 6; ++i){
-			    outputDOMElems[i].style.backgroundImage = 'url("img/dontKnow.png")';
+			    outputDOMElems[i+1].style.backgroundImage = 'url("img/dontKnow.png")';
             }
 		}
 
@@ -21,8 +22,10 @@ modules.push({
             var serialLastDigitEven = getDataElemByName(data, "serialLastDigit").value % 2 == 0;
             for(var i = 1; i <= 6; ++i){
                 var col = getDataElemByName(data, "wire"+i+"Color").value;
-                if(col === "")
-                    return init(outputDOMElems);
+                if(col === ""){
+                    init(outputDOMElems);
+                    return outputDOMElems[7].innerHTML = 'Missing wire indicators.';
+                }
                 if(col !== "none")
                     colors.push({c:col,i:i});
                 else
@@ -118,23 +121,25 @@ modules.push({
             if(cut > 0){
                 setResult(cut);
             } else {
-                return init(outputDOMElems);
+                init(outputDOMElems);
+                outputDOMElems[7].innerHTML = 'Missing serial last digit or invalid wire count.';
             }
 
             function setResult(index){
+                outputDOMElems[7].innerHTML = '';
                 for(var i = 0; i < 6; ++i){
                     if(i+1 === index){
-                        outputDOMElems[i].style.backgroundImage = 'url("img/cut.png")';
+                        outputDOMElems[i+1].style.backgroundImage = 'url("img/cut.png")';
                     } else if(empty[i] === "none"){
-                        outputDOMElems[i].style.backgroundImage = 'url("img/dontKnow.png")';
+                        outputDOMElems[i+1].style.backgroundImage = 'url("img/dontKnow.png")';
                     } else {
-                        outputDOMElems[i].style.backgroundImage = 'url("img/dontCut.png")';
+                        outputDOMElems[i+1].style.backgroundImage = 'url("img/dontCut.png")';
                     }
                 }
             }
 		}
 
-        var fields = [];
+        var fields = [{func : "out", type : "text", name: "wiresLabel"}];
         for(var i = 1; i <= 6; ++i){
             fields.push({func : "in", type : "radioC", name : "wire"+i+"Color", values : ["red","black","white","yellow","blue","none"]});
             fields.push({func : "out", type : "imgBox", name : "res"+i});

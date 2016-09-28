@@ -18,7 +18,7 @@ modules.push({
 		function onchange(data, outputDOMElems){
 			generalData = [];
 			generalData.push({ name : "serialLastDigit", value : getDataElemByName(data, "serialLastDigit").value});
-			generalData.push({ name : "serialVoewl", value : getDataElemByName(data, "serialVoewl").value});
+			generalData.push({ name : "serialVoewl", value : getDataElemByName(data, "serialVowel").value});
 			generalData.push({ name : "strikes", value : getDataElemByName(data, "strikes").value});
 			generalData.push({ name : "batteryCount", value : getDataElemByName(data, "batteryCount").value});
 			generalData.push({ name : "indicators", value : getIndicatorValues()});

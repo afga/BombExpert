@@ -83,4 +83,9 @@ div.inputColorBox.none{
 
 .imgBox {
 	background-size: contain;
+	margin: 3px;
+}
+
+.outText {
+	margin: 5px 0 5px 0;
 }
