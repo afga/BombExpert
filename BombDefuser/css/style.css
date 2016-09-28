@@ -80,3 +80,7 @@ div.inputColorBox.none{
 	padding: 3px;
 	border: 2px solid black;
 }
+
+.imgBox {
+	background-size: contain;
+}

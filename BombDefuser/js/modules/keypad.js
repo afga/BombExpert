@@ -26,23 +26,54 @@ modules.push({
 			var imgs = ["1-copyright.svg","2-filledstar.svg3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg","7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg","14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg","21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg","28-balloon.svg","30-upsidedowny.svg","31-bt.svg"];
 
 			var currSel = [];
-			//TODO parse to int
 			getDataElemByName(data,"pads1").value.forEach(function(itemI){
-				currSel.push(itemI);
+				currSel.push(parseInt(itemI)+1);
 			});
 			getDataElemByName(data,"pads2").value.forEach(function(itemI){
-				currSel.push(6+itemI);
+				currSel.push(7+parseInt(itemI));
 			});
 			getDataElemByName(data,"pads3").value.forEach(function(itemI){
-				currSel.push(12+itemI);
+				currSel.push(13+parseInt(itemI));
 			});
 			getDataElemByName(data,"pads4").value.forEach(function(itemI){
-				currSel.push(18+itemI);
+				currSel.push(19+parseInt(itemI));
 			});
 			getDataElemByName(data,"pads5").value.forEach(function(itemI){
-				currSel.push(24+itemI);
+				currSel.push(25+parseInt(itemI));
 			});
-			console.log(currSel);
+
+			if(currSel.length == 4){
+				var setId = -1;
+				sets.forEach(function(set, setIdx){
+					var s = setIdx;
+					currSel.forEach(function(act){
+						if(set.indexOf(act)==-1)
+							s = -1;
+					});
+					if(s == setIdx){
+						setId = setIdx;
+						return;
+					}
+				});
+				setResult(setId);
+			}
+			else{
+				setResult(-1);
+			}
+
+			function setResult(setId){
+				if(setId == -1){
+					init(outputDOMElems);
+				}
+				else{
+					var cnt = 0;
+					sets[setId].forEach(function(id){
+						if(currSel.indexOf(id) != -1){
+							outputDOMElems[cnt++].style.backgroundImage = 'url(img/keypads/' + imgs[id-2] + ')';
+						}
+					});
+				}
+			}
 		}
 
 		return {
