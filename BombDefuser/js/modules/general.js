@@ -9,13 +9,17 @@ modules.push({
 	getSolver : function(){
 		function init(outputDOMElems){
 			outputDOMElems[0].innerHTML = "Last digit of serial number:";
-			outputDOMElems[1].innerHTML = "Number of batteries:";
-			outputDOMElems[2].innerHTML = "Lit indicators:";
+			outputDOMElems[1].innerHTML = "Serial has vowel:";
+			outputDOMElems[2].innerHTML = "Strikes:";
+			outputDOMElems[3].innerHTML = "Number of batteries:";
+			outputDOMElems[4].innerHTML = "Lit indicators:";
 		}
 
 		function onchange(data, outputDOMElems){
 			generalData = [];
 			generalData.push({ name : "serialLastDigit", value : getDataElemByName(data, "serialLastDigit").value});
+			generalData.push({ name : "serialVoewl", value : getDataElemByName(data, "serialVoewl").value});
+			generalData.push({ name : "strikes", value : getDataElemByName(data, "strikes").value});
 			generalData.push({ name : "batteryCount", value : getDataElemByName(data, "batteryCount").value});
 			generalData.push({ name : "indicators", value : getIndicatorValues()});
 
@@ -33,6 +37,12 @@ modules.push({
 			fields : [
 				{func : "out", type : "text", name : "serialLabel"},
 				{func : "in", type : "textBox", name : "serialLastDigit"},
+				{func : "layout", type : "lineBreak"},
+				{func : "out", type : "text", name : "serialVowelLabel"},
+				{func : "in", type : "radioT", name : "serialVowel", values : ["Yes", "No"]},
+				{func : "layout", type : "lineBreak"},
+				{func : "out", type : "text", name : "strikesLabel"},
+				{func : "in", type : "radioT", name : "strikes", values : ["0", "1", "2"]},
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "batteryLabel"},
 				{func : "in", type : "textBox", name : "batteryCount"},
