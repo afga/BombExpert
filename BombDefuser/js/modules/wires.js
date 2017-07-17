@@ -80,10 +80,12 @@ modules.push({
                         else
                             return lastWire().i;
                     case 4:
-                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
-                            return 0;
-                        else if(colorNum.red > 1 && !serialLastDigitEven)
-                            return lastWire("red").i;
+                        if(colorNum.red > 1){
+                            if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                                return 0;
+                            else if(!serialLastDigitEven)
+                                return lastWire("red").i;
+                        }
                         else if(lastWire().c === "yellow" && colorNum.red == 0)
                             return nthWire(1).i;
                         else if(colorNum.blue == 1)
@@ -93,10 +95,12 @@ modules.push({
                         else
                             return nthWire(2).i;
                     case 5:
-                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
-                            return 0;
-                        else if(lastWire().c === "black" && !serialLastDigitEven)
-                            return nthWire(4).i;
+                        if(lastWire().c === "black"){
+                            if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                                return 0;
+                            else if(!serialLastDigitEven)
+                                return nthWire(4).i;
+                        }
                         else if(colorNum.red == 1 && colorNum.yellow > 1)
                             return nthWire(1).i;
                         else if(colorNum.black == 0)
@@ -104,10 +108,12 @@ modules.push({
                         else
                             return nthWire(1).i;
                     case 6:
-                        if(getDataElemByName(data, "serialLastDigit").value ===undefined)
-                            return 0;
-                        else if(colorNum.yellow == 0 && !serialLastDigitEven)
-                            return nthWire(3).i;
+                        if(colorNum.yellow == 0){
+                            if(getDataElemByName(data, "serialLastDigit").value ===undefined)
+                                return 0;
+                            else if(!serialLastDigitEven)
+                                return nthWire(3).i;
+                        }
                         else if(colorNum.yellow == 1 && colorNum.white > 1)
                             return nthWire(4).i;
                         else if(colorNum.red == 0)
@@ -115,14 +121,21 @@ modules.push({
                         else
                             return nthWire(4).i;
                     default:
-                        return 0;
+                        return -1;
                 }
             }();
             if(cut > 0){
                 setResult(cut);
             } else {
                 init(outputDOMElems);
-                outputDOMElems[7].innerHTML = 'Missing serial last digit or invalid wire count.';
+                switch(cut){
+                case -1:
+                    outputDOMElems[7].innerHTML = 'Invalid wire count.';    
+                    break;
+                case 0:
+                    outputDOMElems[7].innerHTML = 'Missing serial last digit.';
+                    break;
+                }
             }
 
             function setResult(index){
