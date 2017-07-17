@@ -16,12 +16,12 @@ modules.push({
 		}
 
 		function onchange(data, outputDOMElems){
-			generalData = [];
-			generalData.push({ name : "serialLastDigit", value : getDataElemByName(data, "serialLastDigit").value});
-			generalData.push({ name : "serialVoewl", value : getDataElemByName(data, "serialVowel").value});
-			generalData.push({ name : "strikes", value : getDataElemByName(data, "strikes").value});
-			generalData.push({ name : "batteryCount", value : getDataElemByName(data, "batteryCount").value});
-			generalData.push({ name : "indicators", value : getIndicatorValues()});
+			generalData = {};
+			generalData.serialLastDigit = getDataElemByName(data, "serialLastDigit").value;
+			generalData.serialVowel = getDataElemByName(data, "serialVowel").value;
+			generalData.strikes = getDataElemByName(data, "strikes").value;
+			generalData.batteryCount = getDataElemByName(data, "batteryCount").value;
+			generalData.indicators = getIndicatorValues();
 
 			function getIndicatorValues(){
 				var out = [];

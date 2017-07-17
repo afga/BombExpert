@@ -17,8 +17,8 @@ modules.push({
 			var buttonColor = getDataElemByName(data, "buttonColor").value;
 			var buttonText = getDataElemByName(data, "buttonText").value;
 			var lightColor = getDataElemByName(data, "lightColor").value;
-			var batteryCount = getDataElemByName(data, "batteryCount").value;
-			var indicators = getDataElemByName(data, "indicators").value;
+			var batteryCount = generalData.batteryCount;
+			var indicators = generalData.indicators;
 			function holdRelease(){
 				if(buttonColor!=="" &&
 					buttonText!=="" &&

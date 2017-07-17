@@ -1,3 +1,3 @@
 var modules = [];
 var solvers = [];
-var generalData=[];
+var generalData={};

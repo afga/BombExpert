@@ -45,15 +45,19 @@ function createSolver(module){
 
 function changed(solverIndex){
 	if(solverIndex === 0){
-		for(var i = 1; i < solvers.length; ++i){
-			changed(i);
-		}
+		changed(1);
 	} else {
 		var data = getDataForSolver(solverIndex);
 		var outDOM = getOutputDOMElementsForSolver(solverIndex);
 
 		solvers[solverIndex].onchange(data, outDOM);
 	}
+	if(solverIndex === 1){
+		for(var i = 2; i < solvers.length; ++i){
+			changed(i);
+		}
+	}
+
 }
 
 function $(element){
