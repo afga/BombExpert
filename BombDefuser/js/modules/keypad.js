@@ -25,7 +25,7 @@ modules.push({
 				[10,15,24,13,22,16,6]
 			];
 			var imgs = ["1-copyright.svg","2-filledstar.svg","3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg","7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg","14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg","21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg","28-balloon.svg","30-upsidedowny.svg","31-bt.svg"];
-
+			console.log(data)
 			var currSel = [];
 			getDataElemByName(data,"pads1").value.forEach(function(itemI){
 				currSel.push(parseInt(itemI)+1);
@@ -43,8 +43,8 @@ modules.push({
 				currSel.push(25+parseInt(itemI));
 			});
 
-			if(currSel.length == 4){
-				var setId = -1;
+			if(currSel.length > 0){
+				var possibleSets = [];
 				sets.forEach(function(set, setIdx){
 					var s = setIdx;
 					currSel.forEach(function(act){
@@ -52,16 +52,30 @@ modules.push({
 							s = -1;
 					});
 					if(s == setIdx){
-						setId = setIdx;
-						return;
+						possibleSets.push(setIdx);
 					}
 				});
-				setResult(setId);
-			}
-			else{
-				setResult(-1);
-			}
+				var possibleNums = [];
+				possibleSets.forEach(function(setId){
+					sets[setId].forEach(function(num){
+						possibleNums.push(num);
+					})
+				})
+				var numsToDisable = [];
+				for(var i = 1; i < 28; i++){
+					if(possibleNums.indexOf(i) == -1){
+						numsToDisable.push(i);
+					}
+				}
+				//TODO disableInputs(numsToDisable) // and enable all the others
 
+				if(currSel.length == 4){
+					setResult(possibleSets[0]);
+				} else {
+					setResult(-1);
+				}
+			}
+			
 			function setResult(setId){
 				if(setId == -1){
 					init(outputDOMElems);
@@ -70,7 +84,7 @@ modules.push({
 					var cnt = 0;
 					sets[setId].forEach(function(id){
 						if(currSel.indexOf(id) != -1){
-							outputDOMElems[cnt++].style.backgroundImage = 'url(img/keypads/' + imgs[id-1] + ')';
+							outputDOMElems[2 + cnt++].style.backgroundImage = 'url(img/keypads/' + imgs[id-1] + ')';
 						}
 					});
 				}
