@@ -1,32 +1,28 @@
-
 /* Input Fields*/
-.solve-module div.inputColorBox {
-	clear: none;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	border: solid 2px black;
-	vertical-align: super;
-	cursor: pointer;
-}
-
-.solve-module img.inputCheckImg {
+.solve-module div.inputColorBox,
+.solve-module img.inputCheckImg,
+.solve-module .imgBox{
 	clear: none;
 	display: inline-block;
 	width: 32px;
 	height: 32px;
 	border: solid 2px black;
+	box-sizing: content-box;
 	margin: 0 2px;
+}
+
+.solve-module div.inputColorBox,
+.solve-module img.inputCheckImg {
 	cursor: pointer;
+}
+
+.solve-module .imgBox{
+	background-size: contain;
 }
 
 .solve-module form input {
 	clear: none;
 	display: inline-block;
-}
-
-.solve-module form input.radioC{
-	display: none;
 }
 
 div.inputColorBox.red{
@@ -45,34 +41,30 @@ div.inputColorBox.yellow{
 	background-color: yellow;
 }
 div.inputColorBox.none{
+	background-size: contain;
 	background-image: url("../img/noWire.png");
 }
 
-.solve-module form input.radioC:checked + label > div.inputColorBox{
+.solve-module form input.radioC:checked + label > div.inputColorBox,
+.solve-module form input.checkI:checked + label > img.inputCheckImg,
+.solve-module form input.checkC:checked + label > div.inputColorBox{
 	border: solid 2px lime;
 }
 
-.solve-module form input.checkI{
+.solve-module form input.checkI,
+.solve-module form input.radioC,
+.solve-module form input.checkC{
 	display: none;
 }
-.solve-module form input.checkI:checked + label > img.inputCheckImg{
-	border: solid 2px lime;
-}
 
-.solve-module form input.checkI[disabled] + label > img.inputCheckImg{
+.solve-module form input.radioC[disabled] + label > div.inputColorBox,
+.solve-module form input.checkI[disabled] + label > img.inputCheckImg,
+.solve-module form input.checkC[disabled] + label > div.inputColorBox{
 	opacity: 0.2;
 }
 
 .solve-module form input[type=number]{
 	width: 50px;
-}
-
-.solve-module .imgBox{
-	clear: none;
-	display: inline-block;
-	width: 32px;
-	height: 32px;
-	border: solid 2px black;
 }
 
 .menu-module{
@@ -91,11 +83,6 @@ div.inputColorBox.none{
 	padding: 0 3px 3px 3px;
 	border: 2px solid black;
 	vertical-align: top;
-}
-
-.imgBox {
-	background-size: contain;
-	margin: 3px;
 }
 
 .outText {

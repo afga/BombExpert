@@ -33,6 +33,9 @@ function getSolverHTML(fields, solverIndex){
 					case "checkI":
 						out += getHTMLForCheckImg(field, solverIndex, getFieldId(field, solverIndex));
 						break;
+					case "checkC":
+						out += getHTMLForCheckColor(field, solverIndex, getFieldId(field, solverIndex));
+						break;
 					case "imgMap":
 						out += getHTMLForImgMap(field, solverIndex, getFieldId(field, solverIndex));
 						break;
@@ -91,7 +94,7 @@ function getHTMLForInputNum(field, solverIndex, id){
 		+(field.min !== undefined ? ' min="'+field.min+'"' : '')
 		+(field.max !== undefined ? ' max="'+field.max+'"' : '')
 		+(field.step !== undefined ? ' step="'+field.step+'"' : '')
-		+'/>\n';
+		+'/>';
 }
 
 function getHTMLForRadioColor(field, solverIndex, id){
@@ -100,7 +103,7 @@ function getHTMLForRadioColor(field, solverIndex, id){
 		var id2 = id+"-i"+index;
 		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">';
 		ret += '<label for="'+id2+'">';
-		ret += '	<div class="inputColorBox '+color+'" ></div>';
+		ret += '<div class="inputColorBox '+color+'" ></div>';
 		ret += '</label>';
 	});
 	return ret;
@@ -135,6 +138,19 @@ function getHTMLForCheckImg(field, solverIndex, id){
 		ret += '<img class="inputCheckImg" src="img/'+field.folder+'/'+img+'" />';
 		ret += '</label>';
 	});
+	return ret;
+}
+
+function getHTMLForCheckColor(field, solverIndex, id){
+	var ret = "";
+	field.values.forEach(function(color, index){
+		var id2 = id+"-i"+index;
+		ret += '<input type="checkbox" class="checkC" name="'+field.name+'" value="'+index+'" id="'+id2+'">';
+		ret += '<label for="'+id2+'">';
+		ret += '<div class="inputColorBox '+color+'" ></div>';
+		ret += '</label>';
+	})
+
 	return ret;
 }
 

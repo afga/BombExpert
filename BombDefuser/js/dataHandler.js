@@ -25,13 +25,14 @@ function getDataForSolver(solverIndex){
 					});
 					break;
 				case "checkI":
+				case "checkC":
 					isData = true;
 					newData.name = field.name;
 					newData.value = [];
-					var radios = formElems.namedItem(field.name)
-					Array.prototype.forEach.call (radios, function(radio){
-						if(radio.checked){
-							newData.value.push(radio.value);
+					var checkBoxes = formElems.namedItem(field.name)
+					Array.prototype.forEach.call (checkBoxes, function(box){
+						if(box.checked){
+							newData.value.push(box.value);
 						}
 					});
 					break;
@@ -75,6 +76,7 @@ function getOutputDOMElementsForSolver(solverIndex){
 					outElems.push(elem);
 					break;
 				case "radioC":
+				case "checkC":
 				case "radioT":
 				case "checkI":
 					var elem = [];
