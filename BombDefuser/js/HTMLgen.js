@@ -24,6 +24,9 @@ function getSolverHTML(fields, solverIndex){
 					case "radioC":
 						out += getHTMLForRadioColor(field, solverIndex, getFieldId(field, solverIndex));
 						break;
+					case "radioI":
+						out += getHTMLForRadioImg(field, solverIndex, getFieldId(field, solverIndex));
+						break;
 					case "radioT":
 						out += getHTMLForRadioText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
@@ -104,6 +107,18 @@ function getHTMLForRadioColor(field, solverIndex, id){
 		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">';
 		ret += '<label for="'+id2+'">';
 		ret += '<div class="inputColorBox '+color+'" ></div>';
+		ret += '</label>';
+	});
+	return ret;
+}
+
+function getHTMLForRadioImg(field, solverIndex, id){
+	var ret = '';
+	field.values.forEach(function(img, index){
+		var id2 = `${id}-i${index}`;
+		ret += `<input type="radio" class="radioI" name="${field.name}" value="${index}" id="${id2}">`;
+		ret += `<label for="${id2}">`;
+		ret += `<img class="inputCheckImg" src="img/${field.folder}/${img}" />`;
 		ret += '</label>';
 	});
 	return ret;

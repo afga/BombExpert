@@ -45,18 +45,21 @@ div.inputColorBox.none{
 	background-image: url("../img/noWire.png");
 }
 
+.solve-module form input.radioI:checked + label > img.inputCheckImg,
 .solve-module form input.radioC:checked + label > div.inputColorBox,
 .solve-module form input.checkI:checked + label > img.inputCheckImg,
 .solve-module form input.checkC:checked + label > div.inputColorBox{
 	border: solid 2px lime;
 }
 
-.solve-module form input.checkI,
+.solve-module form input.radioI,
 .solve-module form input.radioC,
+.solve-module form input.checkI,
 .solve-module form input.checkC{
 	display: none;
 }
 
+.solve-module form input.radioI[disabled] + label > div.inputCheckImg,
 .solve-module form input.radioC[disabled] + label > div.inputColorBox,
 .solve-module form input.checkI[disabled] + label > img.inputCheckImg,
 .solve-module form input.checkC[disabled] + label > div.inputColorBox{

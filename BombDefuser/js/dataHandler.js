@@ -14,6 +14,7 @@ function getDataForSolver(solverIndex){
 					break;
 				case "radioC":
 				case "radioT":
+				case "radioI":
 					isData = true;
 					newData.name = field.name;
 					newData.value = "";
@@ -76,8 +77,9 @@ function getOutputDOMElementsForSolver(solverIndex){
 					outElems.push(elem);
 					break;
 				case "radioC":
-				case "checkC":
+				case "radioI":
 				case "radioT":
+				case "checkC":
 				case "checkI":
 					var elem = [];
 					formElems.namedItem(field.name).forEach(function(e){
