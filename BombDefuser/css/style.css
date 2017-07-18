@@ -56,6 +56,10 @@ div.inputColorBox.none{
 	border: solid 2px lime;
 }
 
+.solve-module form input.checkI[disabled] + label > img.inputCheckImg{
+	opacity: 0.2;
+}
+
 .solve-module .imgBox{
 	clear: none;
 	display: inline-block;

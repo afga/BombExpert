@@ -90,8 +90,6 @@ function getOutputDOMElementsForSolver(solverIndex){
 }
 
 function getDataElemByName(data, name){
-	//console.log(data)
-	//console.log(name)
 	for(var i = 0; i < data.length; ++i){
 		if(data[i].name === name){
 			return data[i];

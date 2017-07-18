@@ -11,7 +11,7 @@ modules.push({
 			outputDOMElems[0].innerHTML = 'Keypads:';
 			outputDOMElems[1].innerHTML = 'Resulting order:'
 			for(var i = 0; i < 4; ++i){
-				outputDOMElems[i+2].style.backgroundImage = 'url("img/dontKnow.png")';
+				outputDOMElems[i+7].style.backgroundImage = 'url("img/dontKnow.png")';
 			}
 		}
 
@@ -27,6 +27,8 @@ modules.push({
 			var imgs = ["1-copyright.svg","2-filledstar.svg","3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg","7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg","14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg","21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg","28-balloon.svg","30-upsidedowny.svg","31-bt.svg"];
 			console.log(data)
 			var currSel = [];
+			console.log(getDataElemByName(data,"pads1"))
+			console.log(outputDOMElems)
 			getDataElemByName(data,"pads1").value.forEach(function(itemI){
 				currSel.push(parseInt(itemI)+1);
 			});
@@ -43,8 +45,8 @@ modules.push({
 				currSel.push(25+parseInt(itemI));
 			});
 
+			var possibleSets = [];
 			if(currSel.length > 0){
-				var possibleSets = [];
 				sets.forEach(function(set, setIdx){
 					var s = setIdx;
 					currSel.forEach(function(act){
@@ -55,27 +57,33 @@ modules.push({
 						possibleSets.push(setIdx);
 					}
 				});
+			}
+			if(possibleSets.length > 0){
 				var possibleNums = [];
 				possibleSets.forEach(function(setId){
 					sets[setId].forEach(function(num){
 						possibleNums.push(num);
 					})
 				})
-				var numsToDisable = [];
 				for(var i = 1; i < 28; i++){
-					if(possibleNums.indexOf(i) == -1){
-						numsToDisable.push(i);
-					}
+					setCheckboxDisability(i, possibleNums.indexOf(i) == -1);
 				}
-				//TODO disableInputs(numsToDisable) // and enable all the others
 
 				if(currSel.length == 4){
 					setResult(possibleSets[0]);
 				} else {
 					setResult(-1);
 				}
+			} else {
+				for(var i = 1; i < 28; i++){
+					setCheckboxDisability(i, false);
+				}
 			}
-			
+
+			function setCheckboxDisability(index, disabled){
+				outputDOMElems[1 + Math.floor((index-1)/6)][(index-1)%6].disabled = disabled;
+			}
+
 			function setResult(setId){
 				if(setId == -1){
 					init(outputDOMElems);
@@ -84,7 +92,7 @@ modules.push({
 					var cnt = 0;
 					sets[setId].forEach(function(id){
 						if(currSel.indexOf(id) != -1){
-							outputDOMElems[2 + cnt++].style.backgroundImage = 'url(img/keypads/' + imgs[id-1] + ')';
+							outputDOMElems[7 + cnt++].style.backgroundImage = 'url(img/keypads/' + imgs[id-1] + ')';
 						}
 					});
 				}
@@ -94,15 +102,15 @@ modules.push({
 		return {
 			fields : [
 				{func : "out", type : "text", name : "keypadsLabel"},
-				{func : "in", type : "checkI", name : "pads1", values : ["1-copyright.svg","2-filledstar.svg","3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg"], folder : "keypads"},
+				{func : "inout", type : "checkI", name : "pads1", values : ["1-copyright.svg","2-filledstar.svg","3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
-				{func : "in", type : "checkI", name : "pads2", values : ["7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg"], folder : "keypads"},
+				{func : "inout", type : "checkI", name : "pads2", values : ["7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
-				{func : "in", type : "checkI", name : "pads3", values : ["14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg"], folder : "keypads"},
+				{func : "inout", type : "checkI", name : "pads3", values : ["14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
-				{func : "in", type : "checkI", name : "pads4", values : ["21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg"], folder : "keypads"},
+				{func : "inout", type : "checkI", name : "pads4", values : ["21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
-				{func : "in", type : "checkI", name : "pads5", values : ["28-balloon.svg","30-upsidedowny.svg","31-bt.svg"], folder : "keypads"},
+				{func : "inout", type : "checkI", name : "pads5", values : ["28-balloon.svg","30-upsidedowny.svg","31-bt.svg"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "resultLabel"},
 				{func : "out", type : "imgBox", name : "result1"},
