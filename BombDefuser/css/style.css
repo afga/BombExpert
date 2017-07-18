@@ -40,6 +40,9 @@ div.inputColorBox.blue{
 div.inputColorBox.yellow{
 	background-color: yellow;
 }
+div.inputColorBox.green{
+	background-color: green;
+}
 div.inputColorBox.none{
 	background-size: contain;
 	background-image: url("../img/noWire.png");

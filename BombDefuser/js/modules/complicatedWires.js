@@ -77,7 +77,7 @@ modules.push({
             var warnings = "";
             warnings += batteryWarning ? "<br>Set the battery count." : "";
             warnings += parallelWarning ? "<br>Set if there is a parallel port." : "";
-            warnings += serialWarning ? "<br>Set the serial numbers last digit." : "";
+            warnings += serialWarning ? "<br>Set the serial number's last digit." : "";
             outputDOMElems[8].innerHTML = warnings; 
 
             function needToCut(w){
