@@ -8,8 +8,8 @@ function getHTMLEntryFromMenuEntry(menuE, index){
 
 function getSolverHTML(fields, solverIndex){
 	var out = "";
-	out += '<div class="solve-module" id="'+getSolverId(solverIndex)+'">\n';
-	out += '<form oninput="changed(' + solverIndex + ');" onchange="changed(' + solverIndex + ');">\n';
+	out += '<div class="solve-module" id="'+getSolverId(solverIndex)+'">';
+	out += '<form oninput="changed(' + solverIndex + ');" onchange="changed(' + solverIndex + ');">';
 	fields.forEach(function(field, index){
 		switch(field.func){
 			case "in":
@@ -55,18 +55,22 @@ function getSolverHTML(fields, solverIndex){
 			case "layout":
 				switch(field.type){
 					case "lineBreak":
-						out += "<br />\n";
+						out += "<br />";
 						break;
 					default:
-						console.log("ismeretlen layout type: "+field.type);
+						console.log("unknown layout type: "+field.type);
 				}
 				break;
 			default:
-				console.log("ismeretlen funct type: "+field.func);
+				console.log("unknown func type: "+field.func);
 		}
 	});
-	out += '</form>\n';
-	out += "</div>";
+	out += '</form>';
+	//general solver shouldn't have a close button
+	if (solverIndex !== 1){
+		out += `<span class="close-button" onclick="removeSolver(${solverIndex})">×</span>`;
+	}
+	out += '</div>';
 	return out;
 }
 
@@ -79,7 +83,7 @@ function getFieldId(field, solverIndex){
 }
 
 function getHTMLForInputText(field, solverIndex, id){
-	return '<input type="text" id="'+id+'"/>\n';
+	return '<input type="text" id="'+id+'"/>';
 }
 
 function getHTMLForInputNum(field, solverIndex, id){
@@ -94,10 +98,10 @@ function getHTMLForRadioColor(field, solverIndex, id){
 	var ret = "";
 	field.values.forEach(function(color, index){
 		var id2 = id+"-i"+index;
-		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">\n';
-		ret += '<label for="'+id2+'">\n';
-		ret += '	<div class="inputColorBox '+color+'" ></div>\n';
-		ret += '</label>\n';
+		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">';
+		ret += '<label for="'+id2+'">';
+		ret += '	<div class="inputColorBox '+color+'" ></div>';
+		ret += '</label>';
 	});
 	return ret;
 }
@@ -106,19 +110,19 @@ function getHTMLForRadioText(field, solverIndex, id){
 	var ret = "";
 	field.values.forEach(function(text, index){
 		var id2 = id+"-i"+index;
-		ret += '<input type="radio" class="radioT" name="'+field.name+'" value="'+text+'"" id="'+id2+'">\n';
-		ret += '<label for="'+id2+'">'+text+'</label>\n';
+		ret += '<input type="radio" class="radioT" name="'+field.name+'" value="'+text+'"" id="'+id2+'">';
+		ret += '<label for="'+id2+'">'+text+'</label>';
 	});
 	return ret;
 }
 
 function getHTMLForSelect(field, solverIndex, id){
 	var ret = "";
-	ret += '<select size="'+field.values.length+'" id="'+id+'">\n';
+	ret += '<select size="'+field.values.length+'" id="'+id+'">';
 	field.values.forEach(function(text, index){
-		ret += '	<option value='+text+'>'+text+'</option>\n';
+		ret += '<option value='+text+'>'+text+'</option>';
 	});
-	ret += '</select>\n';
+	ret += '</select>';
 	return ret;
 }
 
@@ -126,21 +130,21 @@ function getHTMLForCheckImg(field, solverIndex, id){
 	var ret = "";
 	field.values.forEach(function(img, index){
 		var id2 = id+"-i"+index;
-		ret += '<input type="checkbox" class="checkI" name="'+field.name+'" value="'+index+'" id="'+id2+'">\n';
-		ret += '<label for="'+id2+'">\n';
-		ret += '	<img class="inputCheckImg" src="img/'+field.folder+'/'+img+'" />\n';
-		ret += '</label>\n';
+		ret += '<input type="checkbox" class="checkI" name="'+field.name+'" value="'+index+'" id="'+id2+'">';
+		ret += '<label for="'+id2+'">';
+		ret += '<img class="inputCheckImg" src="img/'+field.folder+'/'+img+'" />';
+		ret += '</label>';
 	});
 	return ret;
 }
 
 function getHTMLForImgMap(field, solverIndex, id){
 	var ret = "";
-	ret += '<img src="img/'+field.img+'" usemap="'+ id +'" id="'+ id +'"/>\n';
-	ret += '<map name="'+ id +'">\n';
+	ret += '<img src="img/'+field.img+'" usemap="'+ id +'" id="'+ id +'"/>';
+	ret += '<map name="'+ id +'">';
 	field.values.forEach(function(area, index){
-		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>\n';
+		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>';
 	});
-	ret += '</map>\n';
+	ret += '</map>';
 	return ret;
 }

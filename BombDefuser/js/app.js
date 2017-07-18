@@ -43,14 +43,23 @@ function createSolver(module){
 	solvers[solverIndex].init(outDOM);
 }
 
+function removeSolver(solverIndex) {
+	var solver = $('#'+getSolverId(solverIndex));
+	var parent = solver.parentNode.parentNode;
+	parent.removeChild(solver.parentNode);
+	solvers[solverIndex] = undefined;
+}
+
 function changed(solverIndex){
 	if(solverIndex === 0){
 		changed(1);
 	} else {
-		var data = getDataForSolver(solverIndex);
-		var outDOM = getOutputDOMElementsForSolver(solverIndex);
+		if(solvers[solverIndex] !== undefined){
+			var data = getDataForSolver(solverIndex);
+			var outDOM = getOutputDOMElementsForSolver(solverIndex);
 
-		solvers[solverIndex].onchange(data, outDOM);
+			solvers[solverIndex].onchange(data, outDOM);
+		}
 	}
 	if(solverIndex === 1){
 		for(var i = 2; i < solvers.length; ++i){
