@@ -49,7 +49,7 @@ modules.push({
 			outputDOMElems[1].innerHTML = outText; 
 		}
 
-		function mapHandler(value/* , fieldName */){
+		function mapHandler(value, fieldName){
 			mapValue += value;
 		}
 
@@ -71,6 +71,9 @@ modules.push({
 				{func : "in", type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [
 					{shape : "rect", coords : "0,0,50,50", value : "A"},
 					{shape : "rect", coords : "50,0,100,50", value : "B"}
+				], attributes: [
+					{name: "width", value: "447"},
+					{name: "height", value: "157"}
 				]},
 				{func : "out", type : "text", name : "out"}
 			],

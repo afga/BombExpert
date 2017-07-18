@@ -156,11 +156,19 @@ function getHTMLForCheckColor(field, solverIndex, id){
 
 function getHTMLForImgMap(field, solverIndex, id){
 	var ret = "";
-	ret += '<img src="img/'+field.img+'" usemap="'+ id +'" id="'+ id +'"/>';
-	ret += '<map name="'+ id +'">';
+	ret += '<map name="'+ id +'" id="' + id + '">';
 	field.values.forEach(function(area, index){
 		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>';
 	});
 	ret += '</map>';
+	ret += '<img src="img/'+field.img+'" usemap="#'+ id +'" id="img-'+ id +'"'+getHTMLForAttributes(field.attributes)+'/>';
+	return ret;
+}
+
+function getHTMLForAttributes(attributes){
+	var ret = "";
+	attributes.forEach(function(attr){
+		ret += ` ${attr.name}="${attr.value}"`;
+	});
 	return ret;
 }
