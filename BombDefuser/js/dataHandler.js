@@ -7,6 +7,7 @@ function getDataForSolver(solverIndex){
 			var isData = false;
 			switch(field.type){
 				case "textBox":
+				case "numBox":
 					isData = true;
 					newData.name = field.name;
 					newData.value = $("#"+getFieldId(field, solverIndex)).value;
@@ -65,6 +66,7 @@ function getOutputDOMElementsForSolver(solverIndex){
 		if(field.func === "out" || field.func === "inout"){
 			switch(field.type){
 				case "textBox":
+				case "numBox":
 				case "select":
 				case "imgMap":
 				case "text":

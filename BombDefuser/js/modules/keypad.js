@@ -25,10 +25,7 @@ modules.push({
 				[10,15,24,13,22,16,6]
 			];
 			var imgs = ["1-copyright.svg","2-filledstar.svg","3-hollowstar.svg","4-smileyface.svg","5-doublek.svg","6-omega.svg","7-squidknife.svg","8-pumpkin.svg","9-hookn.svg","11-six.svg","12-squigglyn.svg","13-at.svg","14-ae.svg","15-meltedthree.svg","16-euro.svg","18-nwithhat.svg","19-dragon.svg","20-questionmark.svg","21-paragraph.svg","22-rightc.svg","23-leftc.svg","24-pitchfork.svg","26-cursive.svg","27-tracks.svg","28-balloon.svg","30-upsidedowny.svg","31-bt.svg"];
-			console.log(data)
 			var currSel = [];
-			console.log(getDataElemByName(data,"pads1"))
-			console.log(outputDOMElems)
 			getDataElemByName(data,"pads1").value.forEach(function(itemI){
 				currSel.push(parseInt(itemI)+1);
 			});

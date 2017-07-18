@@ -18,6 +18,9 @@ function getSolverHTML(fields, solverIndex){
 					case "textBox":
 						out += getHTMLForInputText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
+					case "numBox":
+						out += getHTMLForInputNum(field, solverIndex, getFieldId(field, solverIndex));
+						break;
 					case "radioC":
 						out += getHTMLForRadioColor(field, solverIndex, getFieldId(field, solverIndex));
 						break;
@@ -77,6 +80,14 @@ function getFieldId(field, solverIndex){
 
 function getHTMLForInputText(field, solverIndex, id){
 	return '<input type="text" id="'+id+'"/>\n';
+}
+
+function getHTMLForInputNum(field, solverIndex, id){
+	return '<input type="number" id="'+id+'"'
+		+(field.min !== undefined ? ' min="'+field.min+'"' : '')
+		+(field.max !== undefined ? ' max="'+field.max+'"' : '')
+		+(field.step !== undefined ? ' step="'+field.step+'"' : '')
+		+'/>\n';
 }
 
 function getHTMLForRadioColor(field, solverIndex, id){

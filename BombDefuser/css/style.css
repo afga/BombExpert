@@ -60,6 +60,10 @@ div.inputColorBox.none{
 	opacity: 0.2;
 }
 
+.solve-module form input[type=number]{
+	width: 50px;
+}
+
 .solve-module .imgBox{
 	clear: none;
 	display: inline-block;
