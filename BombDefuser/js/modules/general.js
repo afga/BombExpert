@@ -10,15 +10,17 @@ modules.push({
 		function init(outputDOMElems){
 			outputDOMElems[0].innerHTML = "Last digit of serial number:";
 			outputDOMElems[1].innerHTML = "Serial has vowel:";
-			outputDOMElems[2].innerHTML = "Strikes:";
-			outputDOMElems[3].innerHTML = "Number of batteries:";
-			outputDOMElems[4].innerHTML = "Lit indicators:";
+			outputDOMElems[2].innerHTML = "Has parallel port:";
+			outputDOMElems[3].innerHTML = "Strikes:";
+			outputDOMElems[4].innerHTML = "Number of batteries:";
+			outputDOMElems[5].innerHTML = "Lit indicators:";
 		}
 
 		function onchange(data, outputDOMElems){
 			generalData = {};
 			generalData.serialLastDigit = getDataElemByName(data, "serialLastDigit").value;
 			generalData.serialVowel = getDataElemByName(data, "serialVowel").value;
+			generalData.parallelPort = getDataElemByName(data, "parallelPort").value;
 			generalData.strikes = getDataElemByName(data, "strikes").value;
 			generalData.batteryCount = getDataElemByName(data, "batteryCount").value;
 			generalData.indicators = getIndicatorValues();
@@ -40,6 +42,9 @@ modules.push({
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "serialVowelLabel"},
 				{func : "in", type : "radioT", name : "serialVowel", values : ["Yes", "No"]},
+				{func : "layout", type : "lineBreak"},
+				{func : "out", type : "text", name : "parallelPortLabel"},
+				{func : "in", type : "radioT", name : "parallelPort", values : ["Yes", "No"]},
 				{func : "layout", type : "lineBreak"},
 				{func : "out", type : "text", name : "strikesLabel"},
 				{func : "in", type : "radioT", name : "strikes", values : ["0", "1", "2"]},
