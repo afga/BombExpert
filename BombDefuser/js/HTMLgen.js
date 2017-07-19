@@ -1,7 +1,7 @@
 function getHTMLEntryFromMenuEntry(menuE, index){
 	var x = '';
 	x += `<li class="menu-module" id="menu-i${index}">`;
-	x += menuE.name;
+	x += `<img src="img/icons/${menuE.img}">`;
 	x += '</li>';
 	return x;
 }

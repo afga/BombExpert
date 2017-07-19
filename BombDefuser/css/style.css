@@ -1,4 +1,24 @@
-/* Input Fields*/
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.container {
+	width: 95vw;
+	margin: 0 auto;
+}
+
+#menu-div {
+	width: 5vw;
+	float: left;
+}
+
+#solvers {
+	width: 90vw;
+	float: right;
+}
+
 .solve-module div.inputColorBox,
 .solve-module img.inputCheckImg,
 .solve-module .imgBox{
@@ -75,8 +95,6 @@ div.inputColorBox.none{
 
 .menu-module{
 	list-style-type: none;
-	display: inline;
-	margin-right: 20px;
 	cursor: pointer;
 }
 
