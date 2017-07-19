@@ -5,13 +5,15 @@
 }
 
 .container {
-	width: 95vw;
-	margin: 0 auto;
+	width: 100vw;
 }
 
 #menu-div {
-	width: 5vw;
+	width: 10vw;
 	float: left;
+	display: flex;
+	flex-flow: wrap;
+	flex-direction: column;
 }
 
 #solvers {
@@ -43,6 +45,7 @@
 .solve-module form input {
 	clear: none;
 	display: inline-block;
+	border: 1px solid grey;
 }
 
 div.inputColorBox.red{
@@ -96,6 +99,10 @@ div.inputColorBox.none{
 .menu-module{
 	list-style-type: none;
 	cursor: pointer;
+	max-width: 100px;
+	width: 5vw;
+	display: inline-block;
+  clear: none;
 }
 
 .solve div{
@@ -129,7 +136,7 @@ div.inputColorBox.none{
 
 .solve-module div.box div.whoBox{
 	width: 98px;
-    height: 95px;
+  height: 95px;
 	padding-top: 5px;
 	margin: 10px;
 	background-size: contain;
