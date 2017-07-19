@@ -24,6 +24,9 @@ function getSolverHTML(fields, solverIndex){
 					case 'radioC':
 						out += getHTMLForRadioColor(field, solverIndex, getFieldId(field, solverIndex));
 						break;
+					case "radioI":
+						out += getHTMLForRadioImg(field, solverIndex, getFieldId(field, solverIndex));
+						break;
 					case 'radioT':
 						out += getHTMLForRadioText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
