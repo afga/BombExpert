@@ -204,25 +204,85 @@ modules.push({
 			fields : [
                 {func : "out", type : "text", name : "memoryLabel"},
                 {func : "out", type : "text", name : "disp-pos-val"},
-                {func : "inout", type : "numBox", name : "display1", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "pos1", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "lab1", min : 1, max : 4, step : 1},
+                {func : "inout", type : "numBox", name : "display1", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "pos1", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "lab1", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
                 {func : "layout", type : "lineBreak"},
-                {func : "inout", type : "numBox", name : "display2", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "pos2", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "lab2", min : 1, max : 4, step : 1},
+                {func : "inout", type : "numBox", name : "display2", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "pos2", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "lab2", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
                 {func : "layout", type : "lineBreak"},
-                {func : "inout", type : "numBox", name : "display3", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "pos3", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "lab3", min : 1, max : 4, step : 1},
+                {func : "inout", type : "numBox", name : "display3", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "pos3", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "lab3", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
                 {func : "layout", type : "lineBreak"},
-                {func : "inout", type : "numBox", name : "display4", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "pos4", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "lab4", min : 1, max : 4, step : 1},
+                {func : "inout", type : "numBox", name : "display4", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "pos4", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "lab4", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
                 {func : "layout", type : "lineBreak"},
-                {func : "inout", type : "numBox", name : "display5", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "pos5", min : 1, max : 4, step : 1},
-                {func : "inout", type : "numBox", name : "lab5", min : 1, max : 4, step : 1},
+                {func : "inout", type : "numBox", name : "display5", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "pos5", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
+                {func : "inout", type : "numBox", name : "lab5", attributes: [
+                    {name: "min", value: 1},
+                    {name: "max", value: 4},
+                    {name: "step", value: 1}
+                    ]},
                 {func : "out", type : "text", name : "outText"},
 			],
 			init : init,

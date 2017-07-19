@@ -90,11 +90,7 @@ function getHTMLForInputText(field, solverIndex, id){
 }
 
 function getHTMLForInputNum(field, solverIndex, id){
-	return `<input type="number" id="${id}"`
-		+(field.min !== undefined ? ` min="${field.min}"` : '')
-		+(field.max !== undefined ? ` max="${field.max}"` : '')
-		+(field.step !== undefined ? ` step="${field.step}"` : '')
-		+'>';
+	return `<input type="number" id="${id}"${getHTMLForAttributes(field.attributes)}>`;
 }
 
 function getHTMLForRadioColor(field, solverIndex, id){
