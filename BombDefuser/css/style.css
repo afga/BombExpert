@@ -97,6 +97,7 @@ div.inputColorBox.none{
 
 .solve-module {
 	position: relative;
+	max-width: 472px; 
 }
 
 .close-button {
@@ -106,4 +107,51 @@ div.inputColorBox.none{
 	font-size: 1.5em;
 	line-height: 1;
 	cursor: pointer;
+}
+
+.solve-module div.box div.whoBox{
+	width: 98px;
+    height: 95px;
+	padding-top: 5px;
+	margin: 10px;
+	background-size: contain;
+	background-position: center;
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+	font-weight: bold;
+}
+
+.solve-module div.box div.whoBox.bl{
+	background-image: url("../img/who/bl.png");
+}
+.solve-module div.box div.whoBox.br{
+	background-image: url("../img/who/br.png");
+}
+.solve-module div.box div.whoBox.lc{
+	background-image: url("../img/who/lc.png");
+}
+.solve-module div.box div.whoBox.rc{
+	background-image: url("../img/who/rc.png");
+}
+.solve-module div.box div.whoBox.tl{
+	background-image: url("../img/who/tl.png");
+}
+.solve-module div.box div.whoBox.tr{
+	background-image: url("../img/who/tr.png");
+}
+
+.solve-module ul.whoList{
+	padding-left: 0px;
+}
+
+.solve-module ul.whoList > li{
+	font-family: monospace;
+	font-size: 1.35em;
+	list-style-type: none;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+}
+.solve-module ul.whoList > li:hover{
+	background-color: lightgray;
 }

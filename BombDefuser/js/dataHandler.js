@@ -19,6 +19,8 @@ function getDataForSolver(solverIndex){
 					newData.name = field.name;
 					newData.value = "";
 					var radios = formElems.namedItem(field.name);
+					if(!radios.forEach)
+						radios = [radios];
 					Array.prototype.forEach.call(radios, function(radio){
 						if(radio.checked){
 							newData.value = radio.value;
@@ -31,6 +33,8 @@ function getDataForSolver(solverIndex){
 					newData.name = field.name;
 					newData.value = [];
 					var checkBoxes = formElems.namedItem(field.name)
+					if(!checkBoxes.forEach)
+						checkBoxes = [checkBoxes];
 					Array.prototype.forEach.call (checkBoxes, function(box){
 						if(box.checked){
 							newData.value.push(box.value);
@@ -73,6 +77,7 @@ function getOutputDOMElementsForSolver(solverIndex){
 				case "imgMap":
 				case "text":
 				case "imgBox":
+				case "box":
 					var elem = $("#"+getFieldId(field, solverIndex));
 					outElems.push(elem);
 					break;
@@ -82,7 +87,10 @@ function getOutputDOMElementsForSolver(solverIndex){
 				case "checkC":
 				case "checkI":
 					var elem = [];
-					formElems.namedItem(field.name).forEach(function(e){
+					var formItems = formElems.namedItem(field.name);
+					if(!formItems.forEach)
+						formItems = [formItems];
+					formItems.forEach(function(e){
 						elem.push(e);
 					});
 					outElems.push(elem);

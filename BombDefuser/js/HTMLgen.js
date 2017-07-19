@@ -51,6 +51,9 @@ function getSolverHTML(fields, solverIndex){
 					case 'imgBox':
 						out += `<div class="imgBox" id="${getFieldId(field, solverIndex)}"></div>`;
 						break;
+					case "box":
+						out += `<div class="box" id="${getFieldId(field, solverIndex)}"></div>`;
+						break;
 					default:
 						console.log("unknown output type: " + field.type);
 				}
