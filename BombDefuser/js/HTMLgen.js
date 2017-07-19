@@ -1,74 +1,71 @@
 function getHTMLEntryFromMenuEntry(menuE, index){
-	var x = "";
-	x += '<li class="menu-module" id="menu-i' + index + '">';
+	var x = '';
+	x += `<li class="menu-module" id="menu-i${index}">`;
 	x += menuE.name;
 	x += '</li>';
 	return x;
 }
 
 function getSolverHTML(fields, solverIndex){
-	var out = "";
-	out += '<div class="solve-module" id="'+getSolverId(solverIndex)+'">';
-	out += '<form oninput="changed(' + solverIndex + ');" onchange="changed(' + solverIndex + ');">';
+	var out = '';
+	out += `<div class="solve-module" id="${getSolverId(solverIndex)}">`;
+	out += `<form oninput="changed(${solverIndex});" onchange="changed(${solverIndex});">`;
 	fields.forEach(function(field, index){
 		switch(field.func){
-			case "in":
-			case "inout":
+			case 'in':
+			case 'inout':
 				switch(field.type){
-					case "textBox":
+					case 'textBox':
 						out += getHTMLForInputText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "numBox":
+					case 'numBox':
 						out += getHTMLForInputNum(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "radioC":
+					case 'radioC':
 						out += getHTMLForRadioColor(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "radioI":
-						out += getHTMLForRadioImg(field, solverIndex, getFieldId(field, solverIndex));
-						break;
-					case "radioT":
+					case 'radioT':
 						out += getHTMLForRadioText(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "select":
+					case 'select':
 						out += getHTMLForSelect(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "checkI":
+					case 'checkI':
 						out += getHTMLForCheckImg(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "checkC":
+					case 'checkC':
 						out += getHTMLForCheckColor(field, solverIndex, getFieldId(field, solverIndex));
 						break;
-					case "imgMap":
+					case 'imgMap':
 						out += getHTMLForImgMap(field, solverIndex, getFieldId(field, solverIndex));
 						break;
 					default:
-						console.log("ismeretlen input type: "+field.type);
+						console.log("unknown input type: " + field.type);
 				}
 				break;
-			case "out":
+			case 'out':
 				switch(field.type){
-					case "text":
-						out += '<p class="outText" id="'+getFieldId(field, solverIndex)+'"></p>';
+					case 'text':
+						out += `<p class="outText" id="${getFieldId(field, solverIndex)}"></p>`;
 						break;
-					case "imgBox":
-						out += '<div class="imgBox" id="'+getFieldId(field, solverIndex)+'"></div>';
+					case 'imgBox':
+						out += `<div class="imgBox" id="${getFieldId(field, solverIndex)}"></div>`;
 						break;
 					default:
-						console.log("ismeretlen output type: "+field.type);
+						console.log("unknown output type: " + field.type);
 				}
 				break;
-			case "layout":
+			case 'layout':
 				switch(field.type){
-					case "lineBreak":
-						out += "<br />";
+					case 'lineBreak':
+						out += '<br>';
 						break;
 					default:
-						console.log("unknown layout type: "+field.type);
+						console.log("unknown layout type: " + field.type);
 				}
 				break;
 			default:
-				console.log("unknown func type: "+field.func);
+				console.log("unknown func type: " + field.func);
 		}
 	});
 	out += '</form>';
@@ -81,32 +78,32 @@ function getSolverHTML(fields, solverIndex){
 }
 
 function getSolverId(solverIndex){
-	return "solver-i"+solverIndex;
+	return `solver-i${solverIndex}`;
 }
 
 function getFieldId(field, solverIndex){
-	return "field-s"+solverIndex+"-n"+field.name+"-t"+field.type;
+	return `field-s${solverIndex}-n${field.name}-t${field.type}`;
 }
 
 function getHTMLForInputText(field, solverIndex, id){
-	return '<input type="text" id="'+id+'"/>';
+	return `<input type="text" id="${id}">`;
 }
 
 function getHTMLForInputNum(field, solverIndex, id){
-	return '<input type="number" id="'+id+'"'
-		+(field.min !== undefined ? ' min="'+field.min+'"' : '')
-		+(field.max !== undefined ? ' max="'+field.max+'"' : '')
-		+(field.step !== undefined ? ' step="'+field.step+'"' : '')
-		+'/>';
+	return `<input type="number" id="${id}"`
+		+(field.min !== undefined ? ` min="${field.min}"` : '')
+		+(field.max !== undefined ? ` max="${field.max}"` : '')
+		+(field.step !== undefined ? ` step="${field.step}"` : '')
+		+'>';
 }
 
 function getHTMLForRadioColor(field, solverIndex, id){
-	var ret = "";
+	var ret = '';
 	field.values.forEach(function(color, index){
-		var id2 = id+"-i"+index;
-		ret += '<input type="radio" class="radioC" name="'+field.name+'" value="'+color+'"" id="'+id2+'">';
-		ret += '<label for="'+id2+'">';
-		ret += '<div class="inputColorBox '+color+'" ></div>';
+		var id2 = `${id}-i${index}`;
+		ret += `<input type="radio" class="radioC" name="${field.name}" value="${color}" id="${id2}">`;
+		ret += `<label for="${id2}">`;
+		ret += `<div class="inputColorBox ${color}"></div>`;
 		ret += '</label>';
 	});
 	return ret;
@@ -125,63 +122,63 @@ function getHTMLForRadioImg(field, solverIndex, id){
 }
 
 function getHTMLForRadioText(field, solverIndex, id){
-	var ret = "";
+	var ret = '';
 	field.values.forEach(function(text, index){
-		var id2 = id+"-i"+index;
-		ret += '<input type="radio" class="radioT" name="'+field.name+'" value="'+text+'"" id="'+id2+'">';
-		ret += '<label for="'+id2+'">'+text+'</label>';
+		var id2 = `${id}-i${index}`;
+		ret += `<input type="radio" class="radioT" name="${field.name}" value="${text}" id="${id2}">`;
+		ret += `<label for="${id2}">${text}</label>`;
 	});
 	return ret;
 }
 
 function getHTMLForSelect(field, solverIndex, id){
-	var ret = "";
-	ret += '<select size="'+field.values.length+'" id="'+id+'">';
+	var ret = '';
+	ret += `<select size="${field.values.length}" id="${id}">`;
 	field.values.forEach(function(text, index){
-		ret += '<option value='+text+'>'+text+'</option>';
+		ret += `<option value="${text}">${text}</option>`;
 	});
 	ret += '</select>';
 	return ret;
 }
 
 function getHTMLForCheckImg(field, solverIndex, id){
-	var ret = "";
+	var ret = '';
 	field.values.forEach(function(img, index){
-		var id2 = id+"-i"+index;
-		ret += '<input type="checkbox" class="checkI" name="'+field.name+'" value="'+index+'" id="'+id2+'">';
-		ret += '<label for="'+id2+'">';
-		ret += '<img class="inputCheckImg" src="img/'+field.folder+'/'+img+'" />';
+		var id2 = `${id}-i${index}`;
+		ret += `<input type="checkbox" class="checkI" name="${field.name}" value="${index}" id="${id2}">`;
+		ret += `<label for="${id2}">`;
+		ret += `<img class="inputCheckImg" src="img/${field.folder}/${img}">`;
 		ret += '</label>';
 	});
 	return ret;
 }
 
 function getHTMLForCheckColor(field, solverIndex, id){
-	var ret = "";
+	var ret = '';
 	field.values.forEach(function(color, index){
-		var id2 = id+"-i"+index;
-		ret += '<input type="checkbox" class="checkC" name="'+field.name+'" value="'+index+'" id="'+id2+'">';
-		ret += '<label for="'+id2+'">';
-		ret += '<div class="inputColorBox '+color+'" ></div>';
+		var id2 = `${id}-i${index}`;
+		ret += `<input type="checkbox" class="checkC" name="${field.name}" value="${index}" id="${id2}">`;
+		ret += `<label for="${id2}">`;
+		ret += `<div class="inputColorBox ${color}"></div>`;
 		ret += '</label>';
-	})
+	});
 
 	return ret;
 }
 
 function getHTMLForImgMap(field, solverIndex, id){
-	var ret = "";
-	ret += '<map name="'+ id +'" id="' + id + '">';
+	var ret = '';
+	ret += `<map name="${id}" id="${id}">`;
 	field.values.forEach(function(area, index){
-		ret += '<area shape="'+ area.shape +'" coords="'+ area.coords +'" onclick="mapHandler(\''+ area.value + '\', ' + solverIndex +');changed('+solverIndex+')"/>';
+		ret += `<area shape="${area.shape}" coords="${area.coords}" onclick="mapHandler('${area.value}', ${solverIndex});changed(${solverIndex});">`;
 	});
 	ret += '</map>';
-	ret += '<img src="img/'+field.img+'" usemap="#'+ id +'" id="img-'+ id +'"'+getHTMLForAttributes(field.attributes)+'/>';
+	ret += `<img src="img/${field.img}" usemap="#${id}" id="img-${id}"${getHTMLForAttributes(field.attributes)}>`;
 	return ret;
 }
 
 function getHTMLForAttributes(attributes){
-	var ret = "";
+	var ret = '';
 	attributes.forEach(function(attr){
 		ret += ` ${attr.name}="${attr.value}"`;
 	});
