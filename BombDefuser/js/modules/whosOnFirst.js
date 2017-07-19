@@ -122,7 +122,9 @@ modules.push({
             });
             var btnRet = "";
             if(possibleButtonIndexes.length == 0){
-                btnRet = '<p>No matching labels.</p>';
+                btnRet = 'No matching labels.';
+            } else if(possibleButtonIndexes.length > 9) {
+                btnRet = 'Too many mateching labels.';
             } else {
                 var lists = [];
                 possibleButtonIndexes.forEach(function(btnIndex){
