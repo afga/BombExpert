@@ -124,7 +124,7 @@ modules.push({
             if(possibleButtonIndexes.length == 0){
                 btnRet = 'No matching labels.';
             } else if(possibleButtonIndexes.length > 9) {
-                btnRet = 'Too many mateching labels.';
+                btnRet = 'Too many matching labels.';
             } else {
                 var lists = [];
                 possibleButtonIndexes.forEach(function(btnIndex){
