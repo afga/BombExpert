@@ -7,6 +7,14 @@ window.addEventListener('load', function() {
 
 var solverCounter;
 
+function resetEverything(){
+	$("#solvers").innerHTML = "";
+	solvers = [];
+	generalData={};
+	solverCounter = counter.create();
+	createSolver(modules[0]);
+}
+
 function buildMenu(){
 	for (var i = 1; i < modules.length; ++i){
 		makeMenuItem(modules[i], i);
