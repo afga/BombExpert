@@ -72,8 +72,8 @@ modules.push({
 					{shape : "rect", coords : "0,0,50,50", value : "A"},
 					{shape : "rect", coords : "50,0,100,50", value : "B"}
 				], attributes: [
-					{name: "width", value: "447"},
-					{name: "height", value: "157"}
+					{name: "width", value: "472"},
+					{name: "height", value: "295"}
 				]},
 				{func : "out", type : "text", name : "out"}
 			],
