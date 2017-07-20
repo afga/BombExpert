@@ -92,7 +92,7 @@ function getFieldId(field, solverIndex){
 }
 
 function getHTMLForInputText(field, solverIndex, id){
-	return `<input type="text" id="${id}">`;
+	return `<input type="text" id="${id}"${getHTMLForAttributes(field.attributes)}>`;
 }
 
 function getHTMLForInputNum(field, solverIndex, id){
@@ -135,7 +135,7 @@ function getHTMLForRadioText(field, solverIndex, id){
 
 function getHTMLForSelect(field, solverIndex, id){
 	var ret = '';
-	ret += `<select size="${field.values.length}" id="${id}">`;
+	ret += `<select size="${field.values.length}" id="${id}"${getHTMLForAttributes(field.attributes)}>`;
 	field.values.forEach(function(text, index){
 		ret += `<option value="${text}">${text}</option>`;
 	});
@@ -181,8 +181,11 @@ function getHTMLForImgMap(field, solverIndex, id){
 
 function getHTMLForAttributes(attributes){
 	var ret = '';
-	attributes.forEach(function(attr){
-		ret += ` ${attr.name}="${attr.value}"`;
-	});
+	if(attributes.forEach){
+		attributes.forEach(function(attr){
+			if(attr.name !== "id" && attr.name !== "class")
+				ret += ` ${attr.name}="${attr.value}"`;
+		});
+	}
 	return ret;
 }
