@@ -69,11 +69,35 @@ modules.push({
 				{func : "in", type : "checkI", name : "testCheckImg", values : ["1-copyright.png","2-filledstar.png","3-hollowstar.png","4-smileyface.png","5-doublek.png"], folder : "keypads"},
 				{func : "layout", type : "lineBreak"},
 				{func : "in", type : "imgMap", name : "testImgMap", img : "mctree.gif", values : [
-					{shape : "rect", coords : "0,0,50,50", value : "A"},
-					{shape : "rect", coords : "50,0,100,50", value : "B"}
+					{shape : "circle", coords : "186,112,14", value : "A"},
+					{shape : "circle", coords : "254,260,14", value : "B"},
+					{shape : "circle", coords : "309,260,14", value : "C"},
+					{shape : "circle", coords : "268,185,14", value : "D"},
+					{shape : "circle", coords : "132,38,14", value : "E"},
+					{shape : "circle", coords : "91,260,14", value : "F"},
+					{shape : "circle", coords : "378,185,14", value : "G"},
+					{shape : "circle", coords : "32,260,14", value : "H"},
+					{shape : "circle", coords : "77,112,14", value : "I"},
+					{shape : "circle", coords : "228,260,14", value : "J"},
+					{shape : "circle", coords : "323,185,14", value : "K"},
+					{shape : "circle", coords : "146,260,14", value : "L"},
+					{shape : "circle", coords : "404,112,14", value : "M"},
+					{shape : "circle", coords : "297,112,14", value : "N"},
+					{shape : "circle", coords : "432,185,14", value : "O"},
+					{shape : "circle", coords : "200,260,14", value : "P"},
+					{shape : "circle", coords : "390,260,14", value : "Q"},
+					{shape : "circle", coords : "159,185,14", value : "R"},
+					{shape : "circle", coords : "51,185,14", value : "S"},
+					{shape : "circle", coords : "350,38,14", value : "T"},
+					{shape : "circle", coords : "105,185,14", value : "U"},
+					{shape : "circle", coords : "63,260,14", value : "V"},
+					{shape : "circle", coords : "214,185,14", value : "W"},
+					{shape : "circle", coords : "282,260,14", value : "X"},
+					{shape : "circle", coords : "335,260,14", value : "Y"},
+					{shape : "circle", coords : "364,260,14", value : "Z"}
 				], attributes: [
-					{name: "width", value: "447"},
-					{name: "height", value: "157"}
+					{name: "width", value: "472"},
+					{name: "height", value: "295"}
 				]},
 				{func : "out", type : "text", name : "out"}
 			],
