@@ -180,3 +180,7 @@ div.inputColorBox.none{
 .solve-module ul.whoList > li:hover{
 	background-color: lightgray;
 }
+
+map area{
+	cursor: pointer;
+}

@@ -172,7 +172,7 @@ function getHTMLForImgMap(field, solverIndex, id){
 	var ret = '';
 	ret += `<map name="${id}" id="${id}">`;
 	field.values.forEach(function(area, index){
-		ret += `<area shape="${area.shape}" coords="${area.coords}" onclick="mapHandler('${area.value}', ${solverIndex});changed(${solverIndex});">`;
+		ret += `<area shape="${area.shape}" coords="${area.coords}" onclick="mapHandler('${area.value}', ${solverIndex});">`;
 	});
 	ret += '</map>';
 	ret += `<img src="img/${field.img}" usemap="#${id}" id="img-${id}"${getHTMLForAttributes(field.attributes)}>`;

@@ -115,4 +115,5 @@ function getDataElemByName(data, name){
 
 function mapHandler(value, solverIndex, fieldName){
 	solvers[solverIndex].mapHandler(value, fieldName);
+	changed(solverIndex);
 }
