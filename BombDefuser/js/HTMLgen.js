@@ -181,7 +181,7 @@ function getHTMLForImgMap(field, solverIndex, id){
 
 function getHTMLForAttributes(attributes){
 	var ret = '';
-	if(attributes.forEach){
+	if(attributes !== undefined && attributes.forEach){
 		attributes.forEach(function(attr){
 			if(attr.name !== "id" && attr.name !== "class")
 				ret += ` ${attr.name}="${attr.value}"`;
